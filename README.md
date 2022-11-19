@@ -1,10 +1,18 @@
 # Celadon
 
+A reminder application to experiment with Thymeleaf and htmx.
+
 ## Oveview
 
-Another to do application using
+Core technologies:
 
-- JAX-RS
-- Thymeleaf
-- htmx
-# celadon
+- [Jakarta Web Services]: https://jakarta.ee/specifications/restful-ws/
+- [Thymeleaf]: https://www.thymeleaf.org
+- [htmx]: https://htmx.org/
+
+## Uses
+
+- JDK 17
+- Jakarta EE
+
+
