@@ -112,7 +112,7 @@
                                 <artifactItem>
                                     <groupId>jakarta.platform</groupId>
                                     <artifactId>jakarta.jakartaee-api</artifactId>
-                                    <version>${jakartaee}</version>
+                                    <version>${version.jakartaee}</version>
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>
