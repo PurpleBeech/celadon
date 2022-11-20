@@ -7,33 +7,30 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Context;
 import java.io.IOException;
-import java.io.Writer;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
-import org.thymeleaf.web.IWebExchange;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
 /**
  *
  * @author N☰IL
  */
-@Path("/index")
-public class IndexResource {
+@Path("/reminders")
+public class RemindersResource {
 
     /**
-     * The logger used by this IndexResource.
+     * The logger used by this ReminderResource.
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(IndexResource.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RemindersResource.class);
 
     private HttpServletRequest request;
 
     private HttpServletResponse response;
 
     private JakartaServletWebApplication thymeLeafApp;
-    
+
     private TemplateEngine templateEngine;
 
     /**
@@ -57,17 +54,14 @@ public class IndexResource {
     }
 
     @GET
-    public void getIndex() {
-        LOGGER.info("getIndex");
+    public void getReminders() {
+        LOGGER.info("getReminders");
         configResponse();
-        final IWebExchange webExchange = thymeLeafApp.buildExchange(request, response);
         try {
-            WebContext ctx = new WebContext(webExchange, webExchange.getLocale());
-            ctx.setVariable("today", LocalDate.now().toString());
-            final Writer writer = response.getWriter();
-            templateEngine.process("index", ctx, writer);
+            String greeting = "Greetings from earth " + LocalDateTime.now().toString();
+            response.getOutputStream().write(greeting.getBytes());
         } catch (IOException ioe) {
-            LOGGER.error("", ioe);
+            LOGGER.error("getReminders response write exception", ioe);
         }
     }
 
