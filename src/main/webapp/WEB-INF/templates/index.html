@@ -1,30 +1,8 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Reminders</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style>
-            :root {
-                --celadon: #afe1af;
-            }
-            header {
-                border-bottom: solid 2px var(--celadon);
-            }
-            footer {
-                border-top: solid 2px var(--celadon);
-            }
-        </style>
-    </head>
+<html data-th-replace="~{celadon-template :: layout(~{::section})}">
     <body>
-        <header>
-            <h1>Reminders</h1>
-        </header>
-        <div>TODO write content</div>
-        <footer>
-            <div data-th-text="${today}">
-                1900-01-01
-            </div>
-        </footer>
+        <section>
+            <p>Yet another reminder application.</p>
+        </section>
     </body>
 </html>

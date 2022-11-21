@@ -13,9 +13,10 @@ import jakarta.servlet.ServletContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.messageresolver.IMessageResolver;
+import org.thymeleaf.messageresolver.StandardMessageResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
-import org.thymeleaf.web.servlet.IServletWebApplication;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
 /**
@@ -23,12 +24,12 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
  * @author neil
  */
 @ApplicationScoped
-public class ThymeLeafConfiguration {
+public class ThymeleafConfiguration {
 
     /**
-     * The logger used by this ThymeLeafConfiguration.
+     * The logger used by this ThymeleafConfiguration.
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(ThymeLeafConfiguration.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ThymeleafConfiguration.class);
 
     /**
      * Default time to live, TTL, of the cache.
@@ -84,6 +85,11 @@ public class ThymeLeafConfiguration {
         LOGGER.info("configureTemplateEngine templateResolver is NULL={}", templateResolver == null);
         templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(templateResolver);
+        
+        StandardMessageResolver messageResolver = new StandardMessageResolver();
+        messageResolver.addDefaultMessage("celadon.title", "Celadon");
+        messageResolver.addDefaultMessage("msg.today", "Today is {0}.");
+        templateEngine.setMessageResolver(messageResolver);
     }
 
     private void configureTemplateResolver() {

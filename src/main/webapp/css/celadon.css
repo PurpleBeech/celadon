@@ -1,0 +1,9 @@
+:root {
+  --celadon: #afe1af;
+}
+.container header {
+    border-bottom: 2px solid var(--celadon);
+}
+.container footer {
+    border-top: 2px solid var(--celadon);
+}
