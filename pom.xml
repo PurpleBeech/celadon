@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>beech.purple</groupId>
-    <artifactId>Celadon</artifactId>
+    <artifactId>celadon</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Celadon</name>
@@ -69,6 +69,7 @@
     </dependencies>
     
     <build>
+        <finalName>${artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

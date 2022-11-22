@@ -2,6 +2,10 @@
 <html data-th-replace="~{celadon-template :: layout(~{::section})}">
     <body>
         <section>
+            <div id="reminderEditor"></div>
+            <nav>
+                <a class="btn btn-primary" data-hx-post="reminders" hx-target="#reminderEditor">+</a>
+            </nav>
             <table class="table">
                 <thead>
                     <tr>

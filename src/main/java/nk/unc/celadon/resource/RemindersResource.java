@@ -1,9 +1,11 @@
 package nk.unc.celadon.resource;
 
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import java.io.IOException;
 import java.time.LocalDate;
+import nk.unc.celadon.model.Reminder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.thymeleaf.context.WebContext;
@@ -26,19 +28,35 @@ public class RemindersResource extends CeladonViewController {
      */
     @GET
     public void getReminders() {
-        LOGGER.info("getReminders");
         configResponse();
         final IWebExchange webExchange = thymeLeafApp.buildExchange(request, response);
 
         WebContext ctx = new WebContext(webExchange, webExchange.getLocale());
         String today = LocalDate.now().toString();
-        LOGGER.info("getIndex today={}", today);
+        LOGGER.info("getReminders today={}", today);
         ctx.setVariable("today", today);
         try {
             templateEngine.process("reminders", ctx, response.getWriter());
         } catch (IOException ioe) {
             LOGGER.error("getReminders exception", ioe);
         }
+    }
+
+    @POST
+    public void createReminder() {
+        configResponse();
+        final IWebExchange webExchange = thymeLeafApp.buildExchange(request, response);
+
+        WebContext ctx = new WebContext(webExchange, webExchange.getLocale());
+        String today = LocalDate.now().toString();
+        LOGGER.info("createReminder today={}", today);
+        ctx.setVariable("today", today);
+        try {
+            templateEngine.process("reminder-editor", ctx, response.getWriter());
+        } catch (IOException ioe) {
+            LOGGER.error("createReminder exception", ioe);
+        }
+
     }
 
 }
