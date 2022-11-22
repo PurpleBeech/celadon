@@ -15,4 +15,8 @@ Core technologies:
 - JDK 17
 - Jakarta EE
 
+## To Run
 
+- mvn install
+- mvn tomee:run
+- [Reminders]()
