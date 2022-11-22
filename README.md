@@ -19,4 +19,4 @@ Core technologies:
 
 - mvn install
 - mvn tomee:run
-- [Reminders]()
+- [Reminders](http://localhost:8080/celadon/vc/reminders)
