@@ -16,8 +16,8 @@
         <version.bootstrap>5.2.2</version.bootstrap>
         <version.jakartaee>9.0.0</version.jakartaee>
         <verision.thymeleaf>3.1.0.RELEASE</verision.thymeleaf>
-        <version.slf4j>2.0.3</version.slf4j>
-        <verison.junit>5.6.0</verison.junit>
+        <version.slf4j>2.0.4</version.slf4j>
+        <verison.junit>5.9.1</verison.junit>
     </properties>
     
     <dependencies>
