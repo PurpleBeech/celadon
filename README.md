@@ -13,7 +13,7 @@ Core technologies:
 ## Uses
 
 - JDK 17
-- Jakarta EE
+- Jakarta EE 9.0.0
 
 ## To Run
 

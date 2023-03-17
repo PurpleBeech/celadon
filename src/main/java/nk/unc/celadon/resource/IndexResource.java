@@ -4,6 +4,9 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import nk.unc.celadon.model.Reminder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.thymeleaf.context.WebContext;
@@ -20,6 +23,7 @@ public class IndexResource extends CeladonViewController {
      * The logger used by this IndexResource.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexResource.class);
+
 
     /**
      * 

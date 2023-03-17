@@ -1,5 +1,6 @@
 :root {
   --celadon: #afe1af;
+   --bs-modal-color: #afe1af;
 }
 .container header {
     border-bottom: 2px solid var(--celadon);

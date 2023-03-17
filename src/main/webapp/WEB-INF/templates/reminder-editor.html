@@ -1,17 +1,32 @@
-<div class="card">
-    <div class="card-body">
-        <form>
-            <div class="mb-3">
-                <label class="form-label" for="titleInput">Title</label>
-                <input class="form-control" id="titleInput" type="text" />
+<div class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" style="display: block;" aria-modal="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLiveLabel">Add reminder</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="mb-3">
-                <label for="notesInput">Notes</label>
-                <textarea class="form-control" id="notesInput" rows="4" cols="64"></textarea>
+            <div class="modal-body">
+                <form action="/celadon/vc/reminders" method="POST">
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="titleInput" name="titleInput" type="text" />
+                        <label class="form-label" for="titleInput">Title</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="notesInput" name="notesInput" rows="4" cols="64"></textarea>
+                        <label for="notesInput">Notes</label>
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-check-input" type="checkbox" value="completed" id="completedCheck" name="completedCheck">
+                        <label class="form-check-label" for="completedCheck">
+                            Completed
+                        </label>
+                    </div>
+                    <div class="bm-3">
+                        <button class="btn btn-secondary" name="action" value="CANCEL">Cancel</button>
+                        <button class="btn btn-primary" name="action" value="SAVE">Save</button>
+                    </div>            
+                </form>
             </div>
-            <div class="bm-3">
-                <button class="btn btn-primary">Save</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

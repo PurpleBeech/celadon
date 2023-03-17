@@ -9,12 +9,19 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th data-th-text="#{reminder.title.label}"></th>
-                        <th data-th-text="#{reminder.notes.label}"></th>
                         <th data-th-text="#{reminder.completed.label}"></th>
+                        <th> </th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr data-th-each="reminder, stats : ${reminders}">
+                        <td data-th-text="${stats.index + 1}">1</td>
+                        <td data-th-text="${reminder.title}">To do</td>
+                        <td data-th-text="${reminder.completed}">true</td>
+                        <td>delete</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
