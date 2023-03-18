@@ -14,7 +14,8 @@
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <!-- versions -->
         <version.bootstrap>5.2.3</version.bootstrap>
-        <version.jakartaee>9.0.0</version.jakartaee>
+        <version.jakartaee-api>9.1.0</version.jakartaee-api>
+        <version.mvc-api>2.1.0</version.mvc-api>
         <verision.thymeleaf>3.1.0.RELEASE</verision.thymeleaf>
         <version.slf4j>2.0.4</version.slf4j>
         <verison.junit>5.9.1</verison.junit>
@@ -24,9 +25,33 @@
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>${version.jakartaee}</version>
+            <version>${version.jakartaee-api}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.mvc</groupId>
+            <artifactId>jakarta.mvc-api</artifactId>
+            <version>${version.mvc-api}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.eclipse.krazo/krazo-resteasy -->
+        <dependency>
+            <groupId>org.eclipse.krazo</groupId>
+            <artifactId>krazo-core</artifactId>
+            <version>3.0.1</version>
+        </dependency>        
+        <dependency>
+            <groupId>org.eclipse.krazo</groupId>
+            <artifactId>krazo-resteasy</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.eclipse.krazo.ext/krazo-thymeleaf -->
+        <dependency>
+            <groupId>org.eclipse.krazo.ext</groupId>
+            <artifactId>krazo-thymeleaf</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -47,6 +72,13 @@
             <artifactId>thymeleaf</artifactId>
             <version>${verision.thymeleaf}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars.npm/bootstrap-icons -->
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>bootstrap-icons</artifactId>
+            <version>1.10.3</version>
+        </dependency>
+
         <!-- test dependencies -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -122,12 +154,17 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.tomee.maven</groupId>
-                <artifactId>tomee-maven-plugin</artifactId>
-                <version>9.0.0-M8</version>
+                <groupId>io.openliberty.tools</groupId>
+                <artifactId>liberty-maven-plugin</artifactId>
+                <version>3.7.1</version>
                 <configuration>
-                    <tomeeVersion>9.0.0-M8</tomeeVersion>
-                    <tomeeClassifier>plus</tomeeClassifier>
+                    <runtimeArtifact>
+                        <!-- https://mvnrepository.com/artifact/io.openliberty/openliberty-webProfile9 -->
+                        <groupId>io.openliberty</groupId>
+                        <artifactId>openliberty-webProfile9</artifactId>
+                        <version>23.0.0.2</version>
+                        <type>zip</type>
+                    </runtimeArtifact>
                 </configuration>
             </plugin>
         </plugins>

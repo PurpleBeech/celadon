@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-th-replace="~{celadon-template :: layout(~{::section})}">
+    <body>
+        <section>
+            <div id="reminderEditor"></div>
+            <nav>
+            </nav>
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th data-th-text="#{reminder.title.label}"></th>
+                        <th data-th-text="#{reminder.notes.label}"></th>
+                        <th data-th-text="#{reminder.completed.label}"></th>
+                        <th class="text-end">
+                            <a class="btn btn-outline-secondary btn-sm" data-hx-get="reminders/editor" data-hx-target="#reminderEditor"><i class="bi bi-journal-plus"></i></a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="reminder, stats : ${reminders}">
+                        <td data-th-text="${stats.index + 1}">1</td>
+                        <td data-th-text="${reminder.title}">To do</td>
+                        <td data-th-text="${reminder.notes}">To do</td>
+                        <td><i data-th-if="${reminder.completed}" class="bi bi-check"></i></td>
+                        <td class="text-end">
+                            <div class="btn-group">
+                                <!-- edit -->
+                                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-pencil"></i></button>
+                                <!-- delete -->
+                                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-journal-x"></i></button>
+                                <!-- details -->
+                                <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-three-dots"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </body>
+</html>

@@ -8,15 +8,15 @@
             <div class="modal-body">
                 <form action="/celadon/vc/reminders" method="POST">
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="titleInput" name="titleInput" type="text" />
+                        <input class="form-control" id="titleInput" name="title" type="text" />
                         <label class="form-label" for="titleInput">Title</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <textarea class="form-control" id="notesInput" name="notesInput" rows="4" cols="64"></textarea>
+                        <textarea class="form-control" id="notesInput" name="notes" rows="4" cols="64"></textarea>
                         <label for="notesInput">Notes</label>
                     </div>
                     <div class="mb-3">
-                        <input class="form-check-input" type="checkbox" value="completed" id="completedCheck" name="completedCheck">
+                        <input class="form-check-input" type="checkbox" value="true" id="completedCheck" name="completed">
                         <label class="form-check-label" for="completedCheck">
                             Completed
                         </label>

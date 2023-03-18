@@ -1,46 +1,41 @@
 package nk.unc.celadon.resource;
 
+import jakarta.inject.Inject;
+import jakarta.mvc.Controller;
+import jakarta.mvc.Models;
+import jakarta.mvc.View;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import java.io.IOException;
+import jakarta.ws.rs.Produces;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import nk.unc.celadon.model.Reminder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.thymeleaf.context.WebContext;
-import org.thymeleaf.web.IWebExchange;
 
 /**
  *
  * @author N☰IL
  */
 @Path("/index")
-public class IndexResource extends CeladonViewController {
+@Controller
+public class IndexResource {
 
     /**
      * The logger used by this IndexResource.
      */
     private static final Logger LOGGER = LoggerFactory.getLogger(IndexResource.class);
 
+    @Inject
+    private Models models;
 
     /**
-     * 
+     *
      */
     @GET
+    @Produces("text/html")
+    @View("index.html")
     public void getIndex() {
-        configResponse();
-        final IWebExchange webExchange = thymeLeafApp.buildExchange(request, response);
-        WebContext ctx = new WebContext(webExchange, webExchange.getLocale());
-        String today = LocalDate.now().toString();
-        LOGGER.info("getIndex today={}", today);
-        ctx.setVariable("today", today);
-        try {
-            templateEngine.process("index", ctx, response.getWriter());
-        } catch (IOException ioe) {
-            LOGGER.error("getIndex exception", ioe);
-        }
+        models.put("today", LocalDate.now().toString());
+        LOGGER.info("getIndex");
     }
 
 }
