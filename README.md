@@ -7,7 +7,7 @@ A reminder application to experiment with Thymeleaf and htmx.
 Core technologies:
 
 - [htmx](https://htmx.org/)
-- [Jakarta MVC] (https://jakarta.ee/specifications/mvc/)
+- [Jakarta MVC](https://jakarta.ee/specifications/mvc/)
 - [Jakarta Web Services](https://jakarta.ee/specifications/restful-ws/)
 - [Thymeleaf](https://www.thymeleaf.org)
 
@@ -21,4 +21,4 @@ Core technologies:
 
 - mvn install
 - mvn liberty:run
-- [Reminders](http://localhost:9080/celadon/vc/reminders)
+- open http://localhost:9080/celadon/vc/reminders
