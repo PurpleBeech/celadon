@@ -4,10 +4,13 @@ import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.mvc.View;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import java.time.LocalDate;
 import nk.unc.celadon.model.EditorAction;
@@ -43,19 +46,17 @@ public class RemindersResource //extends CeladonViewController
     @Produces("text/html")
     @View("reminders.html")
     public void getReminders() {
+        LOGGER.info("getReminders");
         models.put("reminders", repo.getReminders());
     }
 
     @POST
     @View("reminders.html")
-    public void createReminder(@FormParam("title") String title,
+    public void createReminder(@FormParam("id") String id,
+            @FormParam("title") String title,
             @FormParam("notes") String notes,
-            @FormParam("completed") boolean completed, 
+            @FormParam("completed") boolean completed,
             @FormParam("action") EditorAction action) {
-
-        String today = LocalDate.now().toString();
-        LOGGER.info("createReminder today={}", today);
-        models.put("today", today);
 
         if (EditorAction.SAVE == action) {
             Reminder reminder = new Reminder(title, notes, completed);
@@ -66,12 +67,23 @@ public class RemindersResource //extends CeladonViewController
     }
 
     @GET
-    @Path("editor")
+    @Path("{id}")
     @View("reminder-editor.html")
-    public void getEditor() {
-        String today = LocalDate.now().toString();
-        LOGGER.info("getEditor today={}", today);
-        models.put("today", today);
+    public void getEditor(@PathParam("id") final String id) {
+        LOGGER.info("getEditor id={}", id);
+        Reminder reminder = repo.getReminder(id);
+        if (reminder == null) {
+            LOGGER.info("getEditor ireminder is null");
+            reminder = new Reminder("", "", false);
+        }
+        models.put("reminder", reminder);
     }
 
+    @DELETE
+    @Path("{id}")
+    @View("empty.html")
+    public void delete(@PathParam("id") final String id) {
+        LOGGER.info("delete id={}, today={}", id);
+        repo.deleteReminder(id);
+    }
 }

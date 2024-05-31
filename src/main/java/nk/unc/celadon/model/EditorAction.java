@@ -16,5 +16,9 @@ public enum EditorAction {
     /**
      * Represents the action to save
      */
-    SAVE
+    SAVE,
+    /**
+     * Represents the action to update
+     */
+    UPDATE
 }

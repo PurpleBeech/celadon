@@ -21,6 +21,14 @@ public interface ReminderRepo {
     void addReminder(Reminder reminder);
 
     /**
+     * Gets the reminder for a specified identifier
+     *
+     * @param id the reminder identifier
+     * @return the reminder
+     */
+    Reminder getReminder(String id);
+
+    /**
      * Gets all the Reminders in this ReminderRepo.
      *
      * @return the list of Reminders
@@ -33,6 +41,6 @@ public interface ReminderRepo {
      * @param id the unique identifier of the Reminder
      * @return ca copy of the deleted Reminder
      */
-    Reminder deleteReminder(int id);
+    Reminder deleteReminder(String id);
 
 }

@@ -1,0 +1,24 @@
+<tbody id="reminderItems">
+    <tr data-th-each="reminder, stats : ${reminders}" data-th-id="${reminder.id}">
+        <td data-th-text="${reminder.title}">To do</td>
+        <td data-th-text="${reminder.notes}">To do</td>
+        <td><i data-th-if="${reminder.completed}" class="bi bi-check"></i></td>
+        <td class="text-end">
+            <div class="btn-group">
+                <!-- edit -->
+                <button class="btn btn-outline-secondary btn-sm" data-th-data-hx-get="@{'/vc/reminders/' + ${reminder.id}}" data-hx-target="#reminderItems" data-hx-swap="outerHTML">
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <!-- delete -->
+                <button class="btn btn-outline-secondary btn-sm" data-th-data-hx-delete="@{'/vc/reminders/' + ${reminder.id}}" data-th-data-hx-target="@{'#' + ${reminder.id}}" data-hx-swap="delete">
+                    <i class="bi bi-journal-x" ></i>
+                </button>
+                <!-- details -->
+                <button class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-three-dots"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+</tbody>
+

@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <form action="/celadon/vc/reminders" method="POST">
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="titleInput" name="title" type="text" />
+                        <input class="form-control" id="titleInput" name="title" type="text" data-th-attr="value=${reminder.title}"/>
                         <label class="form-label" for="titleInput">Title</label>
                     </div>
                     <div class="form-floating mb-3">

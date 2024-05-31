@@ -24,6 +24,6 @@ class ReminderTest {
     public void testToString() {
         Reminder testReminder = new Reminder("Test title", "Test notes");
         LOGGER.info("testToString testReminder={}", testReminder);
-        assertEquals("Reminder[title=Test title, notes=Test notes, completed=false, info=null]", testReminder.toString(), "test title and notes");
+        assertEquals("Reminder[id=, title=Test title, notes=Test notes, completed=false, info=null]", testReminder.toString(), "test title and notes");
     }
 }
