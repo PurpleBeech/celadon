@@ -55,13 +55,22 @@ public class RemindersResource //extends CeladonViewController
     public void createReminder(@FormParam("id") String id,
             @FormParam("title") String title,
             @FormParam("notes") String notes,
-            @FormParam("completed") boolean completed,
+            @FormParam("completed") String completedParam,
             @FormParam("action") EditorAction action) {
-
+        LOGGER.info("createReminder id={}, title={}, notes={}, completedParam={}", id, title, notes, completedParam, action);
+        
         if (EditorAction.SAVE == action) {
-            Reminder reminder = new Reminder(title, notes, completed);
-            LOGGER.info("createReminder reminder={}", reminder);
-            repo.addReminder(reminder);
+            boolean completed = Boolean.valueOf(completedParam);
+            LOGGER.info("createReminder completed={}", completed);
+            if (id == null || id.isEmpty()) {
+                Reminder reminder = new Reminder(title, notes, completed);
+                LOGGER.info("createReminder create reminder={}", reminder);
+                repo.addReminder(reminder);
+            } else {
+                Reminder reminder = new Reminder(id, title, notes, completed);
+                LOGGER.info("createReminder add reminder={}", reminder);
+                repo.updateReminder(reminder);
+            }
             models.put("reminders", repo.getReminders());
         }
     }
@@ -69,13 +78,13 @@ public class RemindersResource //extends CeladonViewController
     @GET
     @Path("{id}")
     @View("reminder-editor.html")
-    public void getEditor(@PathParam("id") final String id) {
-        LOGGER.info("getEditor id={}", id);
+    public void getReminder(@PathParam("id") final String id) {
         Reminder reminder = repo.getReminder(id);
         if (reminder == null) {
-            LOGGER.info("getEditor ireminder is null");
+            LOGGER.info("getEditor reminder is null");
             reminder = new Reminder("", "", false);
         }
+        LOGGER.info("getEditor reminder={}", reminder);
         models.put("reminder", reminder);
     }
 
@@ -83,7 +92,7 @@ public class RemindersResource //extends CeladonViewController
     @Path("{id}")
     @View("empty.html")
     public void delete(@PathParam("id") final String id) {
-        LOGGER.info("delete id={}, today={}", id);
+        LOGGER.info("delete id={}", id);
         repo.deleteReminder(id);
     }
 }

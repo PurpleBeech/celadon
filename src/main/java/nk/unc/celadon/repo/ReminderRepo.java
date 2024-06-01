@@ -42,5 +42,12 @@ public interface ReminderRepo {
      * @return ca copy of the deleted Reminder
      */
     Reminder deleteReminder(String id);
+    
+    /**
+     * Update a specified reminder in this ReminderRepo.
+     * 
+     * @param reminder the Reminder to update
+     */
+    void updateReminder(Reminder reminder);
 
 }

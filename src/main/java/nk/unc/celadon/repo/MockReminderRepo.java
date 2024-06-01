@@ -33,8 +33,7 @@ public class MockReminderRepo implements ReminderRepo {
     
     @Override
     public void addReminder(Reminder reminder) {
-        String idValue = IdHelper.generateHash();
-        LOGGER.info("addReminder idValue={idValue}", idValue);
+        final String idValue = IdHelper.generateHash();
         Reminder createdReminder = reminder.forId(idValue);
         LOGGER.info("addReminder createdReminder={}",createdReminder);
         mockRepo.put(idValue, createdReminder);
@@ -58,6 +57,12 @@ public class MockReminderRepo implements ReminderRepo {
     @Override
     public Reminder getReminder(String id) {
         return mockRepo.get(id);
+    }
+
+    @Override
+    public void updateReminder(Reminder reminder) {
+        final String id = reminder.id();
+        mockRepo.replace(id, reminder);
     }
     
 }

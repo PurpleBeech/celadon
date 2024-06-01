@@ -26,4 +26,12 @@ public record Reminder(String id, String title, String notes, boolean completed,
     public Reminder forId(String id) {
         return new Reminder(id, this.title, this.notes, this.completed, this.info);
     }
+    
+    public String method() {
+        if (this.id == null || this.id.isEmpty()) {
+            return "POST";
+        } else {
+            return "PUT";
+        }
+    }
 }

@@ -81,11 +81,13 @@ public class CeladonViewController {
     }
 
     protected WebContext buildWebContext() {
+        LOGGER.info("buildWebContext");
         var webExchange = buildWebExchange();
         return new WebContext(webExchange, webExchange.getLocale());
     }
     
     protected IWebExchange buildWebExchange() {
+        LOGGER.info("buildWebExchange");
         return thymeLeafApp.buildExchange(request, response);
     }
 
